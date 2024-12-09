@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
+      <!-- AOS CSS for Animations -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+      <title>Startup Profit Prediction</title>
+      <style>
+         body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+         }
+         h2, h4 {
+            color: white;
+            font-weight: bold;
+         }
+         .hero-section {
+            background: linear-gradient(to right, #007bff, #6610f2);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+         }
+         .hero-section h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+         }
+         .hero-section p {
+            font-size: 1.3rem;
+            font-weight: 300;
+         }
+         .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+         }
+         button:hover {
+            background: #0056b3;
+         }
+         .alert {
+            margin-top: 20px;
+         }
+         footer {
+            margin-top: auto;
+            background: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+         }
+         footer p {
+            margin: 0;
+         }
+      </style>
+   </head>
+   <body>
+      <!-- Hero Section -->
+      <div class="hero-section">
+         <h2 data-aos="fade-down">Startup Profit Prediction</h2>
+         <p data-aos="fade-up">Predict your startup's potential profits based on your expenses!</p>
+      </div>
+
+      <!-- Main Content Section -->
+      <div class="container mt-5">
+         <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10" data-aos="fade-up">
+               <div class="form-container">
+                  <h4 class="mb-4 text-center">Startup Expenses Details</h4>
+                  {% if show_hidden == True %}
+                  <div class="alert alert-success" role="alert" data-aos="zoom-in">
+                     {{ prediction_text }}
+                  </div>
+                  {% endif %}
+                  <form action="{{ url_for('predict') }}" method="post" class="needs-validation">
+                     <div class="row">
+                        <div class="col-md-6 mb-3">
+                           <label for="r_d_expenses">R&D Expenses</label>
+                           <input type="text" class="form-control" id="r_d_expenses" name="r_d_expenses" placeholder="Enter R&D Expenses" value="" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                           <label for="administration_expenses">Administration Expenses</label>
+                           <input type="text" class="form-control" id="administration_expenses" name="administration_expenses" placeholder="Enter Admin Expenses" value="" required>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-6 mb-3">
+                           <label for="marketing_expenses">Marketing Expenses</label>
+                           <input type="text" class="form-control" id="marketing_expenses" name="marketing_expenses" placeholder="Enter Marketing Expenses" value="" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                           <label for="state">State</label>
+                           <select id="state" name="state" class="form-control" required>
+                              <option value="" selected>Select State</option>
+                              <option value="New York">New York</option>
+                              <option value="California">California</option>
+                              <option value="Florida">Florida</option>
+                           </select>
+                        </div>
+                     </div>
+                     <button class="btn btn-primary btn-lg btn-block mt-3" type="submit" data-aos="zoom-in">Predict</button>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <footer>
+         <p>© 2024 Startup Prediction | All Rights Reserved</p>
+      </footer>
+
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+      <script>
+         AOS.init();
+      </script>
+   </body>
+</html>
